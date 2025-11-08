@@ -19,7 +19,7 @@ def criar_tabela():
         finally:
             cursor.close()
             conexao.commit()
-
+#criar_tabela()
 
 def cadastrar_produto(nome, categoria, preco, quantidade):
     conexao,cursor = conector()
@@ -36,5 +36,25 @@ def cadastrar_produto(nome, categoria, preco, quantidade):
             cursor.close() 
             conexao.commit()
 
-cadastrar_produto("peixe", "carne branca", 40.00, 30)
+#cadastrar_produto("musculo", "carne bovina", 50.00, 70)
+
+
+
+def listar_produtos():
+    conexao,cursor = conector()
+    if conexao:
+        try: 
+            cursor.execute(
+                "SELECT * FROM produtos ORDER BY id"
+            )
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f" Erro ao listar o produto: {erro}")
+            return []
+        finally:
+            cursor.close()
+            conexao.close()
+
+#print (listar_produtos())
+
 
