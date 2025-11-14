@@ -36,7 +36,7 @@ def cadastrar_produto(nome, categoria, preco, quantidade):
             cursor.close() 
             conexao.commit()
 
-#cadastrar_produto("musculo", "carne bovina", 50.00, 70)
+#cadastrar_produto("bisteca", "carne suina", 35.90, 62)
 
 
 
@@ -73,4 +73,23 @@ def atualizar_produto(quantidade, id):
             cursor.close()
             conexao.close()
 
-atualizar_produto(40, 1)
+#atualizar_produto(40, 1)
+
+
+def deletar_produto(id):
+    conexao,cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+
+                "DELETE FROM produtos WHERE id = %s",
+                (id,)
+            )
+            conexao.commit()
+        except Exception as erro:
+            print(f"produto removido!: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
+            
+deletar_produto(2)
