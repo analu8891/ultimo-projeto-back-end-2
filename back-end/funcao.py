@@ -64,7 +64,7 @@ def atualizar_produto(id, quantidade):
         try:
             cursor.execute(
                 "UPDATE produtos SET quantidade = %s WHERE id = %s",
-                (quantidade,id)
+                (quantidade,id,)
             )
             conexao.commit()
         except Exception as erro:

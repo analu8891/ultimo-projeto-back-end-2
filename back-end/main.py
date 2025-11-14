@@ -41,7 +41,7 @@ def deletar_produtos(id: int):
         return{"erro": "Produto não encontrado"}
     
 
-@app.put("/produtos/id")
+@app.put("/produtos/{id}")
 def atualizar_produtos( id: int ,quantidade: int):
     produtos_existente = funcao.buscar_produto(id)
 

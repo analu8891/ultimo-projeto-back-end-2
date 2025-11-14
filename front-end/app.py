@@ -84,6 +84,7 @@ elif menu == "Deletar Produto":
         else:
             st.error("Erro ao tentar excluir o produto.")
 
+
 elif menu == "Atualizar Produto":
     st.subheader("Atualizar Quantidade do Produto")
 
@@ -91,9 +92,7 @@ elif menu == "Atualizar Produto":
     nova_quantidade = st.number_input("Nova quantidade", min_value=0, step=1)
 
     if st.button("Atualizar"):
-        response = requests.put(
-            f"{API_URL}/produtos/id?id={id}&quantidade={nova_quantidade}"
-        )
+        response = requests.put(f"{API_URL}/produtos/{id_produto}")
 
         if response.status_code == 200:
             data = response.json()
