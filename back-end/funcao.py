@@ -58,13 +58,13 @@ def listar_produtos():
 #print (listar_produtos())
 
 
-def atualizar_produto(quantidade, id):
+def atualizar_produto(id, quantidade):
     conexao,cursor = conector()
     if conexao:
         try:
             cursor.execute(
                 "UPDATE produtos SET quantidade = %s WHERE id = %s",
-                (quantidade,id,)
+                (quantidade, id)
             )
             conexao.commit()
         except Exception as erro:
@@ -92,7 +92,7 @@ def deletar_produto(id):
             cursor.close()
             conexao.close()
 
-#deletar_produto(2)
+# deletar_produto(2)
 
 
 def buscar_produto(id):
